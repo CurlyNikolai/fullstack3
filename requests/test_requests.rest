@@ -1,0 +1,49 @@
+GET http://localhost:3001/api/persons/
+
+###
+
+GET http://localhost:3001/api/persons/1
+
+###
+
+DELETE http://localhost:3001/api/persons/1
+
+###
+
+POST http://localhost:3001/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample name",
+    "number": "123-45678910"
+}
+
+###
+
+POST http://localhost:3001/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample name",
+    "number": "109-87654321"
+}
+
+###
+
+POST http://localhost:3001/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Missing number",
+    "number": ""
+}
+
+###
+
+POST http://localhost:3001/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "",
+    "number": "109-87654321"
+}
