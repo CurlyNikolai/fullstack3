@@ -1,0 +1,59 @@
+GET https://restless-fire-9186.fly.dev/api/persons/
+
+###
+
+GET https://restless-fire-9186.fly.dev/api/persons/1
+
+###
+
+POST https://restless-fire-9186.fly.dev/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Testy Testyson",
+    "number": "123-45678910"
+}
+
+###
+
+DELETE https://restless-fire-9186.fly.dev/api/persons/124399208
+
+###
+
+POST https://restless-fire-9186.fly.dev/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample name",
+    "number": "123-45678910"
+}
+
+###
+
+POST https://restless-fire-9186.fly.dev/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample name",
+    "number": "109-87654321"
+}
+
+###
+
+POST https://restless-fire-9186.fly.dev/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Missing number",
+    "number": ""
+}
+
+###
+
+POST https://restless-fire-9186.fly.dev/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "",
+    "number": "109-87654321"
+}
