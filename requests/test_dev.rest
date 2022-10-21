@@ -6,10 +6,6 @@ GET http://localhost:3001/api/persons/1
 
 ###
 
-DELETE http://localhost:3001/api/persons/1
-
-###
-
 POST http://localhost:3001/api/persons/ HTTP/1.1
 content-type: application/json
 
@@ -17,6 +13,10 @@ content-type: application/json
     "name": "sample name",
     "number": "123-45678910"
 }
+
+###
+
+DELETE http://localhost:3001/api/persons/63528be6a36106118a72ea15
 
 ###
 
