@@ -78,7 +78,10 @@ const App = () => {
               }, 5000)
             })
             .catch(error => {
-              handleMissingPerson(personObject)
+              setNotification({
+                message: error.response.data.error,
+                isError: true
+              })
             })
         }
       }
@@ -109,7 +112,7 @@ const App = () => {
       })
       .catch(error => {
         setNotification({
-          message:`${personObject.name} could not be added`,
+          message: error.response.data.error,
           isError: true
         })
         setTimeout(() => {

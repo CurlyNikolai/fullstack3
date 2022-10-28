@@ -16,7 +16,7 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:3001/api/persons/63528be6a36106118a72ea15
+DELETE http://localhost:3001/api/persons/635b93d2ee67a5aff39b8c4e
 
 ###
 
@@ -46,4 +46,33 @@ content-type: application/json
 {
     "name": "",
     "number": "109-87654321"
+}
+
+###
+
+POST http://localhost:3001/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "as",
+    "number": "123123123123123"
+}
+
+###
+
+POST http://localhost:3001/api/persons/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "asd",
+    "number": "123"
+}
+
+###
+
+PUT http://localhost:3001/api/persons/6352f96ce0bb909a01b2be7d HTTP/1.1
+content-type: application/json
+
+{
+    "number": "123"
 }
