@@ -11,7 +11,7 @@
     "deploy": "flyctl deploy",
     "deploy:full": "npm run build:ui && npm run deploy",
     "logs:prod": "flyctl logs",
-    "lint" : "eslint .",
+    "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },
   "author": "Emil Levo",
@@ -21,11 +21,11 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "mongoose": "^6.6.6",
-    "morgan": "^1.10.0",
-    "react-scripts": "5.0.1"
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "eslint": "^8.26.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "react-scripts": "^5.0.1"
   }
 }
