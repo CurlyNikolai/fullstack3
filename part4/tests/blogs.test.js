@@ -88,6 +88,7 @@ const severalBlogs = [
   }  
 ]
 const listWithNoBlogs = []
+
 describe('total likes', () => {
 
   test('when list has only one blog, equals the likes of that', () => {
@@ -127,6 +128,24 @@ describe('favorite', () => {
       title: '',
       author: '',
       likes: -1
+    })
+  })
+})
+
+describe('most', () => {
+  test('when list has one blog, then the returned author should have one blog', () => {
+    const result = listHelper.mostBlogs(listWithOneBlog)
+    expect(result).toEqual({
+      author: 'Edsger W. Dijkstra',
+      blogs: 1
+    })
+  })
+
+  test('when list has several blogs, then the returned author should be the one with most blogs', () => {
+    const result = listHelper.mostBlogs(severalBlogs)
+    expect(result).toEqual({
+      author: 'Robert C. Martin',
+      blogs: 3
     })
   })
 })
