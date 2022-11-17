@@ -132,7 +132,7 @@ describe('favorite', () => {
   })
 })
 
-describe('most', () => {
+describe('most blogs', () => {
   test('when list has one blog, then the returned author should have one blog', () => {
     const result = listHelper.mostBlogs(listWithOneBlog)
     expect(result).toEqual({
@@ -148,4 +148,40 @@ describe('most', () => {
       blogs: 3
     })
   })
+})
+
+describe('most like', () => {
+
+  test('when list has one blog, that blog\'s author should be returned', () => {
+    const result = listHelper.mostLikes(listWithOneBlog)
+    expect(result).toEqual({
+      author: 'Edsger W. Dijkstra',
+      likes: 5
+    })
+  })
+
+  test('when list has several blogs, the author with the most likes in total should be returned', () => {
+    const result = listHelper.mostLikes(severalBlogs)
+    expect(result).toEqual({
+      author: 'Edsger W. Dijkstra',
+      likes: 17
+    })
+  })
+
+  test('when list has two blogs, the author with the most likes in total should be returned', () => {
+    const result = listHelper.mostLikes(listWithTwoBlogs)
+    expect(result).toEqual({
+      author: 'A.sd und As.d',
+      likes: 10
+    })
+  })
+
+  test('when list has no blogs, empty author should be returned with -1 likes', () => {
+    const result = listHelper.mostLikes(listWithNoBlogs)
+    expect(result).toEqual({
+      author: '',
+      likes: -1
+    })
+  })
+
 })

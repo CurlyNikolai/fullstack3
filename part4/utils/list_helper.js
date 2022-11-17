@@ -28,12 +28,34 @@ const mostBlogs = (blogs) => {
 			author, blogs: e.length
 		}))
 		.value()
-	return mostBlogs
+
+	var most = authorBlogCounts.reduce((prev, curr) => {
+		var return_val = (curr.blogs > prev.blogs) ? curr : prev
+		return return_val
+	}, {author: "", blogs: -1})
+
+	return most
+}
+
+const mostLikes = (blogs) => {
+	var likeCounts = _(blogs).groupBy('author')
+		.map((e, author) => ({
+			author, likes: e.reduce((prev, curr) => {return prev + curr.likes}, 0)
+		}))
+		.value()
+
+	var most = likeCounts.reduce((prev, curr) => {
+		var return_val = (curr.likes > prev.likes) ? curr : prev
+		return return_val
+	}, {author: "", likes: -1})
+	console.log(most)
+	return most
 }
 
 module.exports = {
 	dummy,
 	totalLikes,
 	favoriteBlog,
-	mostBlogs
+	mostBlogs,
+	mostLikes
 }
