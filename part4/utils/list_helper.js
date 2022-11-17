@@ -48,7 +48,6 @@ const mostLikes = (blogs) => {
 		var return_val = (curr.likes > prev.likes) ? curr : prev
 		return return_val
 	}, {author: "", likes: -1})
-	console.log(most)
 	return most
 }
 
