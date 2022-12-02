@@ -11,3 +11,39 @@ content-type: application/json
     "url": "blog.url",
     "likes": "10"
 }
+
+###
+
+POST http://localhost:3001/api/blogs/ HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Blog title 2",
+    "author": "Blog Author 2",
+    "url": "blog.url 2",
+    "likes": "20"
+}
+
+###
+
+POST http://localhost:3001/api/blogs/ HTTP/1.1
+content-type: application/json
+
+{
+}
+
+###
+
+POST http://localhost:3001/api/blogs/ HTTP/1.1
+content-type: application/json
+
+{
+    "title": "No like defined",
+    "author": "No Like Author",
+    "url": "nolike url"
+}
+
+###
+
+DELETE  http://localhost:3001/api/blogs/638a0b2c62c776f6f92b6c1a HTTP/1.1
+content-type: application/json
