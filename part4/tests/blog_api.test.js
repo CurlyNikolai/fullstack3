@@ -121,32 +121,57 @@ describe('gets 400 when', () => {
   })
 })
 
-test('get specific blog with id', async () => {
-  const initialBlogs = await helper.blogsInDb()
-
-  const queriedBlog = initialBlogs[0]
-
-  const resultBlog = await api
-    .get(`/api/blogs/${queriedBlog.id}`)
-    .expect(200)
-    .expect('Content-Type', /application\/json/)
-
-  const processedQueriedBlog = JSON.parse(JSON.stringify(queriedBlog))
-
-  expect(resultBlog.body).toEqual(processedQueriedBlog)
-})
-
-test ('delete specific blog', async () => {
-  const initialBlogs = await helper.blogsInDb()
-
-  const blogToDelete = initialBlogs[0]
+describe('with specific blog id', () => {
+  test('get it', async () => {
+    const initialBlogs = await helper.blogsInDb()
   
-  await api
-    .delete(`/api/blogs/${blogToDelete.id}`)
-    .expect(204)
-
-  const updatedBlogs = await helper.blogsInDb()
-  expect(updatedBlogs).toHaveLength(helper.initialBlogs.length - 1)
+    const queriedBlog = initialBlogs[0]
+  
+    const resultBlog = await api
+      .get(`/api/blogs/${queriedBlog.id}`)
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+  
+    const processedQueriedBlog = JSON.parse(JSON.stringify(queriedBlog))
+  
+    expect(resultBlog.body).toEqual(processedQueriedBlog)
+  })
+  
+  test ('delete it', async () => {
+    const initialBlogs = await helper.blogsInDb()
+  
+    const blogToDelete = initialBlogs[0]
+    
+    await api
+      .delete(`/api/blogs/${blogToDelete.id}`)
+      .expect(204)
+  
+    const updatedBlogs = await helper.blogsInDb()
+    expect(updatedBlogs).toHaveLength(helper.initialBlogs.length - 1)
+    expect(updatedBlogs).not.toContain(blogToDelete.content)
+  })
+  
+  test('update it', async () => {
+    const initialBlogs = await helper.blogsInDb()
+    const blogToUpdate = initialBlogs[0]
+    const newLikes = blogToUpdate.likes + 5
+  
+    const blog = {
+      title: blogToUpdate.title,
+      author: blogToUpdate.author,
+      url: blogToUpdate.url,
+      likes: newLikes
+    }
+  
+    await api
+      .put(`/api/blogs/${blogToUpdate.id}`)
+      .send(blog)
+      .expect(200)
+  
+    const updatedBlogs = await helper.blogsInDb()
+    const updatedBlog = updatedBlogs[0]
+    expect(updatedBlog.likes).toBe(helper.initialBlogs[0].likes + 5)
+  })
 })
 
 afterAll(() => {
