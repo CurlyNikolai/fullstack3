@@ -1,0 +1,61 @@
+GET http://localhost:3001/api/blogs/
+
+###
+
+POST http://localhost:3001/api/blogs/
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RVc2VyTmFtZTIiLCJpZCI6IjYzOWM2M2UwMDdjMWE2YjFlYzAxNWM5ZiIsImlhdCI6MTY3MTE5OTMzMX0.IVjNA24iPZ2pGAymDELPtpCvVH3iMICTn2vIO_dfyZo
+
+{
+    "title": "Blog title",
+    "author": "Blog Author",
+    "url": "blog.url",
+    "likes": "10"
+}
+
+###
+
+POST http://localhost:3001/api/blogs/
+content-type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RVc2VyTmFtZSIsImlkIjoiNjM5YzYzMWEwNTViNDhjYTYwMTg2ODRlIiwiaWF0IjoxNjcxMTk4OTQzfQ.GzHG_Zt1GMaLXTpVbGAhlCpDUNgZ9IdWLMJ3jattTq8
+
+{
+    "title": "Blog title 2",
+    "author": "Blog Author 2",
+    "url": "blog.url 2",
+    "likes": "20"
+}
+
+###
+
+POST http://localhost:3001/api/blogs/ HTTP/1.1
+content-type: application/json
+
+{
+}
+
+###
+
+POST http://localhost:3001/api/blogs/ HTTP/1.1
+content-type: application/json
+
+{
+    "title": "No like defined",
+    "author": "No Like Author",
+    "url": "nolike url"
+}
+
+###
+
+DELETE  http://localhost:3001/api/blogs/ HTTP/1.1
+content-type: application/json
+
+
+###
+
+PUT http://localhost:3001/api/blogs/638a09420d13659fd1e0d37a HTTP/1.1
+content-type: application/json
+
+{
+    "likes": 25
+}
