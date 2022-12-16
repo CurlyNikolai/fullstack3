@@ -1,6 +1,8 @@
 const config = require('./utils/config')
 const express = require('express')
 const app = express()
+const middleware = require('./utils/middleware')
+app.use(middleware.tokenExtractor)
 app.use(express.json())
 const cors = require('cors')
 const blogs = require('./controllers/blogs')
