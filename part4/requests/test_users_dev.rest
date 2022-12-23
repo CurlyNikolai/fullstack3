@@ -22,8 +22,13 @@ content-type: application/json
     "password": "superSecret2"
 }
 
-
 ###
 
-DELETE  http://localhost:3001/api/users/639c3e3fa7a8a94225334979 HTTP/1.1
+POST http://localhost:3001/api/users/ HTTP/1.1
 content-type: application/json
+
+{
+    "username": "testUserName3",
+    "name": "Test Name3",
+    "password": "superSecret3"
+}

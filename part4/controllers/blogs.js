@@ -41,14 +41,17 @@ blogsRouter.post('/', middleware.userExtractor, async (request, response, next) 
 })
 
 blogsRouter.delete('/:id', middleware.userExtractor, async (request, response, next) => {
-
   const blogToDelete = await Blog.findById(request.params.id)
+  if (!blogToDelete) {
+    return response.status(404).json({error: 'resource not found'})
+  }
 
-  if (!decodedToken.id || blogToDelete.user.toString() !== request.user.id.toString()) {
-    return response.status(401).json({error: 'token missing or invalid'})
+  if (blogToDelete.user.toString() !== request.user.id.toString()) {
+      return response.status(401).json({error: 'token missing or invalid'})
   }
 
   try {
+
     const deletedBlog = await Blog.findByIdAndDelete(request.params.id)
     response.status(204).json(deletedBlog)
   }
@@ -57,8 +60,18 @@ blogsRouter.delete('/:id', middleware.userExtractor, async (request, response, n
   }
 })
 
-blogsRouter.put('/:id', async (request, response, next) => {
+blogsRouter.put('/:id', middleware.userExtractor, async (request, response, next) => {
   const body = request.body
+
+  const blogToUpdate = await Blog.findById(request.params.id)
+  if (!blogToUpdate) {
+    return response.status(404).json({error: 'resource not found'})
+  }
+
+  if (blogToUpdate.user.toString() !== request.user.id.toString()) {
+    return response.status(401).json({error: 'token missing or invalid'})
+  }
+  
   const blog = {
     title: body.title,
     author: body.author,
